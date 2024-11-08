@@ -23,10 +23,6 @@ class Weather:
         self.get_response()
         self.get_temp()
         
-
-
-
-
     def get_response(self):
       # Send request to the API and parse the response in json
      self.apiurl = f"https://api.open-meteo.com/v1/dwd-icon?latitude={self.latitude}&longitude={self.longitude}&current=temperature_2m&hourly=temperature_2m&forecast_days={self.days}"
@@ -36,7 +32,7 @@ class Weather:
          print(i)
          print()
       # Return the JSON response
-    def get_Long_Lat(self): #retrieving Longitude and latitude for a particular location
+    def get_Long_Lat(self):
         url = f"https://api.geoapify.com/v1/geocode/autocomplete?text={self.city}&apiKey=8b3e8ad1c1a043ce8fff2da8c3c816f8"
         response=requests.get(url).json() 
 
@@ -67,7 +63,7 @@ class Weather:
                 self.temperatures[oflist[0]].append(temperature)
             
         print(self.temperatures) #getting temperatures of each day as dict
-    def current_Temp(self): #current temperature for current time from self.response
+    def current_Temp(self):
         self.current_temp=self.response['current']['temperature_2m']
         return self.current_temp
         #'current': {'time': '2024-11-08T01:45', 'interval': 900, 'temperature_2m': 10.4}
@@ -82,7 +78,7 @@ class Weather:
             if oflist[0] not in self.times:
                 self.times[oflist[0]]=[oflist[1]]
             else:
-                self.times[oflist[0]].append(oflist[1])  
+                self.times[oflist[0]].append(oflist[1])
         
         #print(self.times)
     def graph_it(self):
@@ -90,7 +86,7 @@ class Weather:
          plt.plot(self.times[key],self.temperatures[key],label=str(key))
          plt.xlabel('Time of Day')
          plt.ylabel('Temperature (°C)')
-         plt.title('Hourly Temperature in '+self.city+", "+ self.country)  #find temperature for each time of the day
+         plt.title('Hourly Temperature in '+self.city+", "+ self.country)
          plt.xticks(rotation=45)  #graphing time vs temperature for each day 
          plt.legend()
        st.pyplot(plt)
@@ -127,7 +123,7 @@ class Weather:
             st.markdown(f"<h4 style='color: white; text-align: left;'>{description}</h4>", unsafe_allow_html=True)
 
 
-def create_webpage(): #creating webpage using streamlit
+def create_webpage():
     st.set_page_config(page_title='top songs analysis', page_icon=':muciscal_note:')
     #st.title("<h5 style='text-align: center;font-family: sans-serif;font-size: small;'>Analysis for your top songs</h5>", unsafe_allow_html=True)
     st.markdown("<h1 style='text-align: center; color: grey;'>Weather forcast</h1>", unsafe_allow_html=True)
@@ -137,7 +133,7 @@ def create_webpage(): #creating webpage using streamlit
     Countryname = st.selectbox(' Select the Country you live in', 
 
 
-['Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda', 'Argentina', 'Armenia', 
+['Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda', 'Argentina', 'Armenia', 
 
     'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 
 
@@ -186,7 +182,7 @@ def create_webpage(): #creating webpage using streamlit
     'Zimbabwe'
 
 ], )
-    if Countryname=="United States of America": #only show if country chosen is the US
+    if Countryname=="United States of America":
          state = st.selectbox(' Select the State you live in', [
     "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", 
     "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", 
