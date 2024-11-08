@@ -205,17 +205,23 @@ def main():
     """
     Call functions for streamlit exectution
     """
-    NumOfDays,PostalCode,Countryname,city,state=create_webpage()
-    st.balloons ()
-    with st.spinner( 'Weather Chart in Process'):
-        time.sleep(12)
+    try:
     
-    weather=Weather(NumOfDays,PostalCode,Countryname,city,state)
-    st.write("Current Weather:", weather.current_Temp(), " C")
-    weather.display_weather_analysis()
-    #weather=Weather(4,"02215","United States of America","Boston","Massachusetts")
-    weather.get_time()
-    weather.graph_it()
+
+        NumOfDays,PostalCode,Countryname,city,state=create_webpage()
+        st.balloons ()
+        with st.spinner( 'Weather Chart in Process'):
+            time.sleep(12)
+        
+        weather=Weather(NumOfDays,PostalCode,Countryname,city,state)
+
+        st.write("Current Weather:", weather.current_Temp(), " C")
+        weather.display_weather_analysis()
+        #weather=Weather(4,"02215","United States of America","Boston","Massachusetts")
+        weather.get_time()
+        weather.graph_it()
+    except  Exception as e:
+        st.error("Weather for Location not found")
   
     
  
