@@ -7,7 +7,7 @@ This project is a user-friendly web app for displaying accurate weather forecast
 - Temperature Charts: Visualize hourly temperature trends over the selected number of days using matplotlib.
 
 - Current Weather Analysis: Get a personalized description of the weather with matching icons based on temperature ranges.
-- 
+  
 - Interactive Interface: Powered by streamlit, you can select the number of forecast days, interact with sliders,the location you want to see the weather for and get instant weather insights.
 
 ## 📝 Code Overview
