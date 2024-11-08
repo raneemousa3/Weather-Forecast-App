@@ -8,7 +8,7 @@ Current Weather Analysis: Get a personalized description of the weather with mat
 Interactive Interface: Powered by streamlit, you can select the number of forecast days, interact with sliders, and get instant weather insights.
 
 
-##📝 Code Overview
+## 📝 Code Overview
 Weather Class: This is where data is fetched, processed, and prepared for display. Key methods:
   get_response(): Connects to the API and retrieves weather data.
   get_Long_Lat(): Uses API to fetch the latitude and longitude corrosponding to your location.
